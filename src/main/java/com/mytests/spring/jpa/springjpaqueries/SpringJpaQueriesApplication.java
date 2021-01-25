@@ -1,5 +1,6 @@
 package com.mytests.spring.jpa.springjpaqueries;
 
+import com.mytests.spring.jpa.springjpaqueries.data.IssuesService;
 import com.mytests.spring.jpa.springjpaqueries.data.SampleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;

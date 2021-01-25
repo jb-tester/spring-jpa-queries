@@ -15,6 +15,6 @@ public interface SampleRepository extends CrudRepository<Sample, Integer> {
     
     List<Sample> findAll();
 
-    @Query("select s.sample from Sample s where s.color = com.mytests.spring.jpa.springjpaqueries.utils.CriteriaProvider.COLOR ")
+    @Query("select s.sample from Sample s where s.color = com.mytests.spring.jpa.springjpaqueries.utils.CriteriaProvider.COLORCRITERIA ")
     List<String> findBySpecifiedQuery1();
 }
