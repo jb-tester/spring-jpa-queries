@@ -20,4 +20,8 @@ public interface IssuesRepository extends CrudRepository<Issues,Long> {
     @Query("select issue from Issues issue where issue.priority = com.mytests.spring.jpa.springjpaqueries.utils.PriorityEnum.Medium")
     List<Issues> findByExplicitQuery1();
     
+    List<Long> findIdByTitleContains(String title);
+    
+    @Query("select issue.title from Issues issue where issue.title like %:pattern% or issue.description like %:pattern%")
+    List<String> findTitlesByKeyword(String pattern);
 }

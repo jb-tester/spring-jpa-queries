@@ -14,9 +14,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class SampleService {
 
-    @Autowired
-    private SampleRepository sampleRepository;
-    
+    private final SampleRepository sampleRepository;
+
+    public SampleService(SampleRepository sampleRepository) {
+        this.sampleRepository = sampleRepository;
+    }
+
     public void displayAll(){
         System.out.println("================ findAll(): ");
         for (Sample sample : sampleRepository.findAll()) {
