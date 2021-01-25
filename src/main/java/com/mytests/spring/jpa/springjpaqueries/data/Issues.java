@@ -7,10 +7,13 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "issues", schema = "jbtests")
-@NamedQueries(
+@NamedQueries({
+        @NamedQuery(name="Issues.findByPriorityEnum",
+                query = "select i from Issues i where i.priority = com.mytests.spring.jpa.springjpaqueries.utils.PriorityEnum.Low"),
         @NamedQuery(name = "Issues.findOpenIssues",
                 query = "select issue from Issues issue where issue.state=com.mytests.spring.jpa.springjpaqueries.data.Issues$StateEnum.Open")
-)
+        
+})
 public class Issues {
     @Id
     @GeneratedValue

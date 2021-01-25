@@ -13,7 +13,7 @@ public class IssuesService {
 
     public void displayAllIssues(){
 
-        System.out.println("========= all issues:");
+        System.out.println("=========(default method) all issues:");
         for (Issues issues : issuesRepository.findAll()) {
             System.out.println(issues.toString());
         }
@@ -21,14 +21,21 @@ public class IssuesService {
 
     public void displayMediumPriorityIssues(){
 
-        System.out.println("========= medium-priority issues:");
+        System.out.println("=========(explicit query) medium-priority issues:");
         for (Issues issues : issuesRepository.findByExplicitQuery1()) {
+            System.out.println(issues.toString());
+        }
+    }
+    public void displayLowPriorityIssues(){
+
+        System.out.println("=========(native query) low-priority issues:");
+        for (Issues issues : issuesRepository.findByPriorityEnum()) {
             System.out.println(issues.toString());
         }
     }
     public void displayOpenIssues(){
 
-        System.out.println("========= open issues:");
+        System.out.println("=========(native query) open issues: ");
         for (Issues issues : issuesRepository.findOpenIssues()) {
             System.out.println(issues.toString());
         }

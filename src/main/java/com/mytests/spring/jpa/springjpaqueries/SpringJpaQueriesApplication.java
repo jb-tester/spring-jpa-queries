@@ -25,5 +25,6 @@ public class SpringJpaQueriesApplication implements CommandLineRunner {
         issuesService.displayAllIssues();
         issuesService.displayMediumPriorityIssues();
         issuesService.displayOpenIssues();
+        issuesService.displayLowPriorityIssues();
     }
 }

@@ -9,8 +9,15 @@ import java.util.List;
 public interface IssuesRepository extends CrudRepository<Issues,Long> {
 
     List<Issues> findAll();
-    @Query("select iss from Issues iss where iss.priority = com.mytests.spring.jpa.springjpaqueries.utils.PriorityEnum.Medium")
-    List<Issues> findByExplicitQuery1();
-
+    
+    // Named queries:
+    // the Issues.findByPriorityEnum query
+    List<Issues> findByPriorityEnum();
+    // the Issues.findOpenIssues query
     List<Issues> findOpenIssues();
+
+    // Explicit queries:
+    @Query("select issue from Issues issue where issue.priority = com.mytests.spring.jpa.springjpaqueries.utils.PriorityEnum.Medium")
+    List<Issues> findByExplicitQuery1();
+    
 }
