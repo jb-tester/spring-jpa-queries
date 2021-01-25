@@ -21,5 +21,9 @@ public class SpringJpaQueriesApplication implements CommandLineRunner {
         SampleService sampleService = ctx.getBean(SampleService.class);
         sampleService.displayAll();
         sampleService.displayByColorCriteria();
+        IssuesService issuesService = ctx.getBean(IssuesService.class);
+        issuesService.displayAllIssues();
+        issuesService.displayMediumPriorityIssues();
+        issuesService.displayOpenIssues();
     }
 }
