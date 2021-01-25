@@ -16,8 +16,15 @@ public class SampleService {
     private SampleRepository sampleRepository;
     
     public void displayAll(){
+        System.out.println("================ findAll(): ");
         for (Sample sample : sampleRepository.findAll()) {
             System.out.println(sample.toString());
+        }
+    }
+    public void displayByColorCriteria(){
+        System.out.println("================== findByColorCriteria: ");
+        for (String s : sampleRepository.findBySpecifiedQuery1()) {
+            System.out.println(s);
         }
     }
 }

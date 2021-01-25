@@ -17,6 +17,8 @@ public class SpringJpaQueriesApplication implements CommandLineRunner {
     ApplicationContext ctx;
     @Override
     public void run(String... args) throws Exception {
-        ctx.getBean(SampleService.class).displayAll();
+        SampleService sampleService = ctx.getBean(SampleService.class);
+        sampleService.displayAll();
+        sampleService.displayByColorCriteria();
     }
 }

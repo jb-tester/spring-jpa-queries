@@ -1,5 +1,6 @@
 package com.mytests.spring.jpa.springjpaqueries.data;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
@@ -13,4 +14,7 @@ import java.util.List;
 public interface SampleRepository extends CrudRepository<Sample, Integer> {
     
     List<Sample> findAll();
+
+    @Query("select s.sample from Sample s where s.color = com.mytests.spring.jpa.springjpaqueries.utils.CriteriaProvider.COLOR ")
+    List<String> findBySpecifiedQuery1();
 }
