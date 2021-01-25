@@ -1,5 +1,6 @@
-package com.mytests.spring.jpa.springjpaqueries.data;
+package com.mytests.spring.jpa.springjpaqueries.repositories;
 
+import com.mytests.spring.jpa.springjpaqueries.data.Sample;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 

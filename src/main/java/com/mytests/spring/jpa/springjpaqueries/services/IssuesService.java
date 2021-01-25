@@ -1,5 +1,7 @@
-package com.mytests.spring.jpa.springjpaqueries.data;
+package com.mytests.spring.jpa.springjpaqueries.services;
 
+import com.mytests.spring.jpa.springjpaqueries.data.Issues;
+import com.mytests.spring.jpa.springjpaqueries.repositories.IssuesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
