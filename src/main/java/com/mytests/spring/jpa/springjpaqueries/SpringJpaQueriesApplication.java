@@ -1,6 +1,6 @@
 package com.mytests.spring.jpa.springjpaqueries;
 
-import com.mytests.spring.jpa.springjpaqueries.data.FooTabService;
+import com.mytests.spring.jpa.springjpaqueries.data.SampleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -17,6 +17,6 @@ public class SpringJpaQueriesApplication implements CommandLineRunner {
     ApplicationContext ctx;
     @Override
     public void run(String... args) throws Exception {
-        ctx.getBean(FooTabService.class).displayAll();
+        ctx.getBean(SampleService.class).displayAll();
     }
 }

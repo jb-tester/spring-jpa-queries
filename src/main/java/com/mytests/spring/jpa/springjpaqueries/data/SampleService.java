@@ -10,14 +10,14 @@ import org.springframework.stereotype.Service;
  * *
  */
 @Service
-public class FooTabService {
+public class SampleService {
 
     @Autowired
-    private FooTabRepository fooTabRepository;
+    private SampleRepository sampleRepository;
     
     public void displayAll(){
-        for (Footab footab : fooTabRepository.findAll()) {
-            System.out.println(footab.toString());
+        for (Sample sample : sampleRepository.findAll()) {
+            System.out.println(sample.toString());
         }
     }
 }

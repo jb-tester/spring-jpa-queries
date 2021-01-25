@@ -10,7 +10,7 @@ import java.util.List;
  * <p>Project: spring-jpa-queries</p>
  * *
  */
-public interface FooTabRepository extends CrudRepository<Footab, Integer> {
+public interface SampleRepository extends CrudRepository<Sample, Integer> {
     
-    List<Footab> findAll();
+    List<Sample> findAll();
 }
