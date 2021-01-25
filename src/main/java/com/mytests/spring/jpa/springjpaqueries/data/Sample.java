@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
+@Table(name = "sample", schema = "jbtests")
 public class Sample {
     @Id
     @GeneratedValue
