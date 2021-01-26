@@ -3,6 +3,7 @@ package com.mytests.spring.jpa.springjpaqueries.repositories;
 import com.mytests.spring.jpa.springjpaqueries.data.Issues;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -23,5 +24,5 @@ public interface IssuesRepository extends CrudRepository<Issues,Long> {
     List<Long> findIdByTitleContains(String title);
     
     @Query("select issue.title from Issues issue where issue.title like %:pattern% or issue.description like %:pattern%")
-    List<String> findTitlesByKeyword(String pattern);
+    List<String> findTitlesByKeyword(@Param("pattern") String pattern);
 }

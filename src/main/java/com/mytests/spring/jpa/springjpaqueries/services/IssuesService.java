@@ -40,4 +40,12 @@ public class IssuesService {
             System.out.println(issues.toString());
         }
     }
+    public void displayTitlesByKeywords(){
+
+        System.out.println("=========(explicit query) issues that contain the keyword: ");
+        for (String title : issuesRepository.findTitlesByKeyword("repo")) {
+            System.out.println(title);
+        }
+    }
+    
 }
