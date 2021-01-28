@@ -16,7 +16,10 @@ public interface IssuesRepository extends CrudRepository<Issues,Long> {
     List<Issues> findByPriorityEnum();
     // the Issues.findOpenIssues query
     List<Issues> findOpenIssues();
-
+    // query from jpa-named-queries.properties: 
+    List<Issues> namedQueryFromProperties(String author, Issues.StateEnum state);
+    
+    
     // Explicit queries:
     @Query("select issue from Issues issue where issue.priority = com.mytests.spring.jpa.springjpaqueries.utils.PriorityEnum.Medium")
     List<Issues> findByExplicitQuery1();

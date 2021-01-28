@@ -40,6 +40,13 @@ public class IssuesService {
             System.out.println(issues.toString());
         }
     }
+    public void displayOpenIssuesOfIrina(){
+
+        System.out.println("=========(native query) open issues by irina: ");
+        for (Issues issues : issuesRepository.namedQueryFromProperties("irina", Issues.StateEnum.Open)) {
+            System.out.println(issues.toString());
+        }
+    }
     public void displayTitlesByKeywords(){
 
         System.out.println("=========(explicit query) issues that contain the keyword: ");
