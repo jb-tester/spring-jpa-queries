@@ -32,4 +32,16 @@ public class SampleService {
             System.out.println(s);
         }
     }
+    public void findAndUpdateAllSamplesInList(){
+        System.out.println("================== find, update and find again: ");
+        System.out.println("-- initial:");
+        for (Sample sample : sampleRepository.getAllRedSamplesWithSpecificNames()) {
+            System.out.println(sample.toString());
+        }
+        sampleRepository.queryAllBySampleNamesAndUpdateNameAndColor("updated_name");
+        System.out.println("-- resulted:");
+        for (Sample sample : sampleRepository.findAll()) {
+            System.out.println(sample.toString());
+        }
+    }
 }
