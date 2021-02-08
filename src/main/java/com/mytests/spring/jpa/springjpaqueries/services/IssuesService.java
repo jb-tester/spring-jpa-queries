@@ -54,5 +54,11 @@ public class IssuesService {
             System.out.println(title);
         }
     }
-    
+    public void displayIssuesWithTitleContainingPattern(){
+
+        System.out.println("=========(native query) issues that contain the keyword in title: ");
+        for (Issues issue : issuesRepository.useConcatenation()) {
+            System.out.println(issue.toString());
+        }
+    }
 }

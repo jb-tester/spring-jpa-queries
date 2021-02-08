@@ -8,6 +8,9 @@ import java.util.Objects;
 @Entity
 @Table(name = "issues", schema = "jbtests")
 @NamedQueries({
+        @NamedQuery(name="Issues.useConcatenation",
+                query = "select i from Issues i " +
+                        "where i.title like '%" + Issues.PATTERN + "%' and i.author in (" + Issues.AUTHORS + ")"),
         @NamedQuery(name="Issues.findByPriorityEnum",
                 query = "select i from Issues i where i.priority = com.mytests.spring.jpa.springjpaqueries.utils.PriorityEnum.Low"),
         @NamedQuery(name = "Issues.findOpenIssues",
@@ -15,8 +18,11 @@ import java.util.Objects;
         
 })
 public class Issues {
+    public static final String PATTERN = "table";
+    public static final String AUTHORS = "'irina','ira'";
     @Id
     @GeneratedValue
+    
     private Long id;
     private String title;
     private String author;

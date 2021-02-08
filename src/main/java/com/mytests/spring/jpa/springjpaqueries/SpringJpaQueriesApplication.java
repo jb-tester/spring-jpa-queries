@@ -30,6 +30,7 @@ public class SpringJpaQueriesApplication implements CommandLineRunner {
         issuesService.displayOpenIssuesOfIrina();
         issuesService.displayLowPriorityIssues();
         issuesService.displayTitlesByKeywords();
+        issuesService.displayIssuesWithTitleContainingPattern();
         System.out.println("=====================that's all=======");
     }
 }
