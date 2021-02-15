@@ -39,6 +39,14 @@ public class SampleService {
             System.out.println(sample.toString());
         }
         sampleRepository.queryAllBySampleNamesAndUpdateNameAndColor("updated_name");
+        //language=HTML
+        String s = "<html>\n" +
+                "<title>foo</title>\n" +
+                "<><body> hello! </body></>" +
+                "<></>\n" +
+                "</html>";
+        //language=JAVA
+        String foo = "";
         System.out.println("-- resulted:");
         for (Sample sample : sampleRepository.findAll()) {
             System.out.println(sample.toString());

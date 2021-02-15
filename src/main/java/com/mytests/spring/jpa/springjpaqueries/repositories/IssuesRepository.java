@@ -9,6 +9,9 @@ import java.util.List;
 
 public interface IssuesRepository extends CrudRepository<Issues,Long> {
 
+    //language=JPAQL
+    String Q1 = "select issue.id, issue.title from Issues as issue";
+
     List<Issues> findAll();
     
     // Named queries:
@@ -26,22 +29,36 @@ public interface IssuesRepository extends CrudRepository<Issues,Long> {
     @Query("select issue from Issues issue where issue.priority = com.mytests.spring.jpa.springjpaqueries.utils.PriorityEnum.Medium")
     List<Issues> findByExplicitQuery1();
     
-    @Query("select issue.title from Issues issue where issue.title like %:pattern% or issue.description like %:pattern%")
+    @Query("select issue.title from Issues issue where issue.title like %:pattern% or issue.description like " +
+            "%:pattern%")
     List<String> findTitlesByKeyword(@Param("pattern") String pattern);
 
     
-    @Query("from Issues where title like %:title%")
+    @Query("from Issues where title like %:title% and author in ('irina','ira')")
     List<Issues> findIdByTitleContains(@Param("title") String title);
     
-    @Query("select \n" +
-            "new com.mytests.spring.jpa.springjpaqueries.repositories.IssueIdAndTitle(issue.id, issue.title) \n" +
-            "from Issues as issue where \n" +
-            "((lower(issue.author) = :aparam) \n" +
-            "   and (issue.id not between 1 and 3) \n" +
+    @Query("select new com.mytests.spring.jpa.springjpaqueries.repositories.IssueIdAndTitle(issue.id, issue.title) " +
+            "from Issues as issue where " +
+            "((lower(issue.author) = :aparam) " +
+            "   and (issue.id not between 1 and 3) " +
             "   and " +
             "(locate('c', issue.title)= 1))")
     List<IssueIdAndTitle> getIdsAndTitlesByAuthor(@Param("aparam") String author);
     
-    @Query ("select issue.id, issue.title from Issues as issue")
+    @Query (Q1)
     List<Object> getIdsAndTitles();
+
+    @Query ("select issue from Issues issue where issue.id between "+MIN+" and "+MAX)
+    List<Issues> getsmth();
+    
+    String MIN = "2";
+    String MAX = "5";
+    String STR1 = "table";
+    String STR2 = "irina";
+    
+    @Query (value = "select * from jbtests.issues where (id between 2 and 5) " +
+            "and lower(author) = lower('"+STR2+"') " +
+            "and lower(title) like lower('"+STR1+"') ", 
+            nativeQuery = true)
+    List<Issues> getSmthNative();
 }
