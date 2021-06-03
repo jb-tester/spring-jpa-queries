@@ -5,6 +5,9 @@ import com.mytests.spring.jpa.springjpaqueries.repositories.SampleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * *
  * <p>Created by irina on 23.01.2021.</p>
@@ -39,14 +42,6 @@ public class SampleService {
             System.out.println(sample.toString());
         }
         sampleRepository.queryAllBySampleNamesAndUpdateNameAndColor("updated_name");
-        //language=HTML
-        String s = "<html>\n" +
-                "<title>foo</title>\n" +
-                "<><body> hello! </body></>" +
-                "<></>\n" +
-                "</html>";
-        //language=JAVA
-        String foo = "";
         System.out.println("-- resulted:");
         for (Sample sample : sampleRepository.findAll()) {
             System.out.println(sample.toString());
