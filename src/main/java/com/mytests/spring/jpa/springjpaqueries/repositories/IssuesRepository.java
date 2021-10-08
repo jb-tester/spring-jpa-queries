@@ -46,7 +46,21 @@ public interface IssuesRepository extends CrudRepository<Issues,Long> {
             "   and " +
             "(locate('c', issue.title)= 1))")
     List<IssueIdAndTitle> getIdsAndTitlesByAuthor(@Param("aparam") String author);
-    
+
+    // enums:
+    // https://youtrack.jetbrains.com/issue/IDEA-160992
+    @Query(value = "select * from jbtests.issues where state = :state", nativeQuery = true)
+    List<Issues> findByState(@Param("state") Issues.StateEnum state);
+    @Query("SELECT o FROM Issues o WHERE o.priority = 'High' OR o.priority = com.mytests.spring.jpa.springjpaqueries.utils.PriorityEnum.Medium")
+    List<Issues> findByPriority();
+    @Query("SELECT o FROM Issues o WHERE o.priority IN ('High', 'Medium')") // https://youtrack.jetbrains.com/issue/IDEA-244155
+    List<Issues> findByPriorities();
+
+     @Query("SELECT o FROM Issues o WHERE o.priority IN (com.mytests.spring.jpa.springjpaqueries.utils.PriorityEnum.High, com.mytests.spring.jpa.springjpaqueries.utils.PriorityEnum.Medium)") // https://youtrack.jetbrains.com/issue/IDEA-80076
+     List<Issues> findByPrioritiesAsTypes();
+
+
+ // use constants:
     @Query (Q1)
     List<Object> getIdsAndTitles();
 
