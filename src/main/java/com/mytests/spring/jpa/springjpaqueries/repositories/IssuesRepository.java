@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface IssuesRepository extends CrudRepository<Issues,Long> {
 
-    //language=JPAQL
+   // no injection here - https://youtrack.jetbrains.com/issue/IDEA-173631
     String Q1 = "select issue.id, issue.title from Issues as issue";
 
     List<Issues> findAll();
@@ -24,7 +24,7 @@ public interface IssuesRepository extends CrudRepository<Issues,Long> {
     // The Issues.useParameters query. Not checked for parameters!
     List<Issues> useParameters(String author);
     // query from jpa-named-queries.properties: 
-    List<Issues> namedQueryFromProperties(String author, Issues.StateEnum state);
+    List<Issues> namedQueryFromProperties(String author, Issues.StateEnum state); // https://youtrack.jetbrains.com/issue/IDEA-260599
     
     
     // Explicit queries:
@@ -33,7 +33,7 @@ public interface IssuesRepository extends CrudRepository<Issues,Long> {
     
     @Query("select issue.title from Issues issue where issue.title like %:pattern% or issue.description like " +
             "%:pattern%")
-    List<String> findTitlesByKeyword(@Param("pattern") String pattern);
+    List<String> findTitlesByKeyword(@Param("pattern") String pattern); // https://youtrack.jetbrains.com/issue/IDEA-260289
 
     
     @Query("from Issues where title like %:title% and author in ('irina','ira')")
@@ -48,7 +48,7 @@ public interface IssuesRepository extends CrudRepository<Issues,Long> {
     List<IssueIdAndTitle> getIdsAndTitlesByAuthor(@Param("aparam") String author);
 
     // enums:
-    // https://youtrack.jetbrains.com/issue/IDEA-160992
+    // https://youtrack.jetbrains.com/issue/IDEA-160992 - Show error when enum type passed as argument into native JPA query
     @Query(value = "select * from jbtests.issues where state = :state", nativeQuery = true)
     List<Issues> findByState(@Param("state") Issues.StateEnum state);
     @Query("SELECT o FROM Issues o WHERE o.priority = 'High' OR o.priority = com.mytests.spring.jpa.springjpaqueries.utils.PriorityEnum.Medium")
