@@ -14,7 +14,8 @@ import java.util.Objects;
         @NamedQuery(name="Issues.findByPriorityEnum",
                 query = "select i from Issues i where i.priority = com.mytests.spring.jpa.springjpaqueries.utils.PriorityEnum.Low"),
         @NamedQuery(name = "Issues.findOpenIssues",
-                query = "select issue from Issues issue where issue.state=com.mytests.spring.jpa.springjpaqueries.data.Issues$StateEnum.Open")
+                query = "select issue from Issues issue where issue.state=com.mytests.spring.jpa.springjpaqueries.data.Issues$StateEnum.Open"), // https://youtrack.jetbrains.com/issue/IDEA-232989
+        @NamedQuery(name = "Issues.useParameters", query = "select issue from Issues issue where issue.author = ?1")
         
 })
 public class Issues {

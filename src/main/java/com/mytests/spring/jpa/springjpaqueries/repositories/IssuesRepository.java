@@ -21,6 +21,8 @@ public interface IssuesRepository extends CrudRepository<Issues,Long> {
     List<Issues> findOpenIssues();
     // the Issues.useConcatenation query
     List<Issues> useConcatenation();
+    // The Issues.useParameters query. Not checked for parameters!
+    List<Issues> useParameters(String author);
     // query from jpa-named-queries.properties: 
     List<Issues> namedQueryFromProperties(String author, Issues.StateEnum state);
     
