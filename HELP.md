@@ -1,7 +1,7 @@
 **_@NamedQueries_ support:**
 
 - https://youtrack.jetbrains.com/issue/IDEA-260599 - no support for query from properties file
-
+- for orm.xml queries use https://github.com/jb-tester/spring-jpa-namedqueries/
 **explicit queries that use java types (including enums)**
 
 - https://youtrack.jetbrains.com/issue/IDEA-173631 - no injection into constant used as query value
