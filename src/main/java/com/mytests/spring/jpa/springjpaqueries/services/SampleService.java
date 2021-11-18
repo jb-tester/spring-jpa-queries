@@ -23,6 +23,12 @@ public class SampleService {
         this.sampleRepository = sampleRepository;
     }
 
+    public void useNamedNativeQuery(){
+        System.out.println("================ use native named query: ");
+        for (Sample sample : sampleRepository.nativeSampleByColor("red")) {
+            System.out.println(sample);
+        }
+    }
     public void displayAll(){
         System.out.println("================ findAll(): ");
         for (Sample sample : sampleRepository.findAll()) {
