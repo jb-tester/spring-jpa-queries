@@ -23,16 +23,26 @@ public class Issues {
     public static final String AUTHORS = "'irina','ira'";
     @Id
     @GeneratedValue
-    
     private Long id;
+    @Basic
+    @Column(name = "title")
     private String title;
+    @Basic
+    @Column(name = "author")
     private String author;
+    @Basic
+    @Column(name = "description")
     private String description;
+    @Basic
+    @Column(name = "priority")
+    @Enumerated(EnumType.STRING)
     private PriorityEnum priority;
+    @Basic
+    @Column(name = "state")
+    @Enumerated(EnumType.STRING)
     private StateEnum state;
 
-    @Id
-    @Column(name = "id")
+    
     public Long getId() {
         return id;
     }
@@ -42,8 +52,7 @@ public class Issues {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "title")
+    
     public String getTitle() {
         return title;
     }
@@ -52,8 +61,7 @@ public class Issues {
         this.title = title;
     }
 
-    @Basic
-    @Column(name = "author")
+   
     public String getAuthor() {
         return author;
     }
@@ -62,8 +70,7 @@ public class Issues {
         this.author = author;
     }
 
-    @Basic
-    @Column(name = "description")
+    
     public String getDescription() {
         return description;
     }
@@ -72,9 +79,7 @@ public class Issues {
         this.description = description;
     }
 
-    @Basic
-    @Column(name = "priority")
-    @Enumerated(EnumType.STRING)
+    
     public PriorityEnum getPriority() {
         return priority;
     }
@@ -83,9 +88,7 @@ public class Issues {
         this.priority = priority;
     }
 
-    @Basic
-    @Column(name = "state")
-    @Enumerated(EnumType.STRING)
+    
     public StateEnum getState() {
         return state;
     }

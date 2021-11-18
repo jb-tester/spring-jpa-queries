@@ -12,23 +12,24 @@ public class Sample {
     @Id
     @GeneratedValue
     private Long id;
+    @Basic
+    @Column(name = "version")
     private Integer version;
+    @Basic
+    @Column(name = "sample")
     private String sample;
+    @Basic
+    @Column(name = "color")
     private String color;
 
-    @Basic
-    @Column(name = "id")
     public Long getId() {
         return id;
     }
-
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "version")
     public Integer getVersion() {
         return version;
     }
@@ -37,8 +38,6 @@ public class Sample {
         this.version = version;
     }
 
-    @Basic
-    @Column(name = "sample")
     public String getSample() {
         return sample;
     }
@@ -47,8 +46,6 @@ public class Sample {
         this.sample = sample;
     }
 
-    @Basic
-    @Column(name = "color")
     public String getColor() {
         return color;
     }
@@ -62,7 +59,8 @@ public class Sample {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Sample sample1 = (Sample) o;
-        return Objects.equals(id, sample1.id) && Objects.equals(version, sample1.version) && Objects.equals(sample, sample1.sample) && Objects.equals(color, sample1.color);
+        return Objects.equals(id, sample1.id) && Objects.equals(version, sample1.version) && Objects.equals(sample,
+                sample1.sample) && Objects.equals(color, sample1.color);
     }
 
     @Override
