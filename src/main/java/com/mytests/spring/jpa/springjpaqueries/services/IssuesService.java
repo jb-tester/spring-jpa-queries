@@ -11,7 +11,7 @@ public class IssuesService {
     @Autowired
     private IssuesRepository issuesRepository;
 
-    public void displayAllIssues(){
+    public void displayAllIssues() {
 
         System.out.println("=========(default method) all issues:");
         for (Issues issues : issuesRepository.findAll()) {
@@ -19,42 +19,47 @@ public class IssuesService {
         }
     }
 
-    public void displayMediumPriorityIssues(){
+    public void displayMediumPriorityIssues() {
 
         System.out.println("=========(explicit query) medium-priority issues:");
         for (Issues issues : issuesRepository.findByExplicitQuery1()) {
             System.out.println(issues.toString());
         }
     }
-    public void displayLowPriorityIssues(){
+
+    public void displayLowPriorityIssues() {
 
         System.out.println("=========(native query) low-priority issues:");
         for (Issues issues : issuesRepository.findByPriorityEnum()) {
             System.out.println(issues.toString());
         }
     }
-    public void displayOpenIssues(){
+
+    public void displayOpenIssues() {
 
         System.out.println("=========(native query) open issues: ");
         for (Issues issues : issuesRepository.findOpenIssues()) {
             System.out.println(issues.toString());
         }
     }
-    public void displayOpenIssuesOfIrina(){
+
+    public void displayOpenIssuesOfIrina() {
 
         System.out.println("=========(native query) open issues by irina: ");
         for (Issues issues : issuesRepository.namedQueryFromProperties("irina", Issues.StateEnum.Open)) {
             System.out.println(issues.toString());
         }
     }
-    public void displayTitlesByKeywords(){
+
+    public void displayTitlesByKeywords() {
 
         System.out.println("=========(explicit query) issues that contain the keyword: ");
         for (String title : issuesRepository.findTitlesByKeyword("repo")) {
             System.out.println(title);
         }
     }
-    public void displayIssuesWithTitleContainingPattern(){
+
+    public void displayIssuesWithTitleContainingPattern() {
 
         System.out.println("=========(native query) issues that contain the keyword in title: ");
         for (Issues issue : issuesRepository.useConcatenation()) {

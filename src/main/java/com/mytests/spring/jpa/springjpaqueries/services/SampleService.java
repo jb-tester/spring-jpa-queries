@@ -2,11 +2,7 @@ package com.mytests.spring.jpa.springjpaqueries.services;
 
 import com.mytests.spring.jpa.springjpaqueries.data.Sample;
 import com.mytests.spring.jpa.springjpaqueries.repositories.SampleRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * *
@@ -23,25 +19,28 @@ public class SampleService {
         this.sampleRepository = sampleRepository;
     }
 
-    public void useNamedNativeQuery(){
+    public void useNamedNativeQuery() {
         System.out.println("================ use native named query: ");
         for (Sample sample : sampleRepository.nativeSampleByColor("red")) {
             System.out.println(sample);
         }
     }
-    public void displayAll(){
+
+    public void displayAll() {
         System.out.println("================ findAll(): ");
         for (Sample sample : sampleRepository.findAll()) {
             System.out.println(sample.toString());
         }
     }
-    public void displayByColorCriteria(){
+
+    public void displayByColorCriteria() {
         System.out.println("================== findByColorCriteria: ");
         for (String s : sampleRepository.findBySpecifiedQuery1()) {
             System.out.println(s);
         }
     }
-    public void findAndUpdateAllSamplesInList(){
+
+    public void findAndUpdateAllSamplesInList() {
         System.out.println("================== find, update and find again: ");
         System.out.println("-- initial:");
         for (Sample sample : sampleRepository.getAllRedSamplesWithSpecificNames()) {

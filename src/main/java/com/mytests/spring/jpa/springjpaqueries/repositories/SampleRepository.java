@@ -23,7 +23,7 @@ public interface SampleRepository extends JpaRepository<Sample, Integer> {
     String COLOR = "white";
 
     List<Sample> findAll();
-    
+
     // Named queries:
     // the Sample.nativeSampleByColor named native query
     List<Sample> nativeSampleByColor(String color);
@@ -34,8 +34,9 @@ public interface SampleRepository extends JpaRepository<Sample, Integer> {
 
     @Query("select s from Sample s where s.sample in (" + SAMPLENAMES + ") and s.color= 'red'")
     List<Sample> getAllRedSamplesWithSpecificNames();
-    
-    @Transactional @Modifying
+
+    @Transactional
+    @Modifying
     @Query("update Sample set sample = :newName, color = '" + COLOR + "', version = 2 where sample in (" + SAMPLENAMES + ")")
     void queryAllBySampleNamesAndUpdateNameAndColor(@Param("newName") String newName);
 }
