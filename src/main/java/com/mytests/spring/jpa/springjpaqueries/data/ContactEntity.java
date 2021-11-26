@@ -11,9 +11,9 @@ import javax.persistence.*;
         query = "select c from ContactEntity c where c.firstname = ?1")})
 @NamedNativeQueries(
         {@NamedNativeQuery(name = "ContactEntity.nativeQuery1",
-                query = "select * from contact where telephone = :?"),
+                query = "select * from contact where telephone = :telephone"),
         @NamedNativeQuery(name = "ContactEntity.nativeQuery2",
-        query = "select * from contact where email = :?")})
+        query = "select * from contact where email = :email")})
 public class ContactEntity {
     @Id
     private Integer id;

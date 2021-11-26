@@ -7,7 +7,7 @@ import java.util.Objects;
 @Table(name = "sample", schema = "jbtests")
 @NamedNativeQueries({
         @NamedNativeQuery(name = "Sample.nativeSampleByColor",
-                query = "select * from sample where color = :?")})
+                query = "select * from sample where color = :color")})
 public class Sample {
     @Id
     @GeneratedValue
