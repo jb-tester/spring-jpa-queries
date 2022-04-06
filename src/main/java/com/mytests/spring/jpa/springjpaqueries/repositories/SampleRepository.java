@@ -4,6 +4,7 @@ import com.mytests.spring.jpa.springjpaqueries.data.Sample;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,7 +17,7 @@ import java.util.List;
  * <p>Project: spring-jpa-queries</p>
  * *
  */
-@Repository("sampleRepository")
+//@Repository("sampleRepository")
 public interface SampleRepository extends JpaRepository<Sample, Integer> {
 
     String SAMPLENAMES = "'sample14','sample16', 'sample18', 'sample20', 'sample22'";
