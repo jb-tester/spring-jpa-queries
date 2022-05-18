@@ -1,12 +1,15 @@
 package com.mytests.spring.jpa.springjpaqueries;
 
 import com.mytests.spring.jpa.springjpaqueries.services.IssuesService;
+import com.mytests.spring.jpa.springjpaqueries.services.SQLExceptionTranslatorTest;
 import com.mytests.spring.jpa.springjpaqueries.services.SampleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+
+import javax.sql.DataSource;
 
 @SpringBootApplication
 public class SpringJpaQueriesApplication implements CommandLineRunner {
@@ -33,5 +36,8 @@ public class SpringJpaQueriesApplication implements CommandLineRunner {
         issuesService.displayTitlesByKeywords();
         issuesService.displayIssuesWithTitleContainingPattern();
         System.out.println("=====================that's all=======");
+        DataSource ds = ctx.getBean(DataSource.class);
+        SQLExceptionTranslatorTest test = ctx.getBean(SQLExceptionTranslatorTest.class);
+        test.demo(ds);
     }
 }
